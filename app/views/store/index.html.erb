@@ -1,7 +1,25 @@
-<% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
-<% end %>
+<div class="row">
+  <div class="col-sm-4">
+      <% @categories.each do |category| %>
+        <p><%= link_to category.title, category_path(category) %></p>
+      <% end %>
+  </div>
+  <div class="col-sm-8">
+    <% @items.each do |item| %>
+      <p><%= item.title %> | <%= number_to_currency(item.price) %> |
+        <% if  current_user  %>
+         <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
+        <% end %>
+    <% end %>
+  </div>
+</div>
 
-<% @items.each do |item| %>
-  <p><%= item.title %> | <%= number_to_currency(item.price) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
-<% end %>
+<br>
+<div class="row text-center">
+  <div class="col-sm-6">
+    <%= link_to("Sign Up", new_user_registration_path) %><br>
+  </div>
+  <div class="col-sm-6">
+    <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %><br>
+  </div>
+</div>

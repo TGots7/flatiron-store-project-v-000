@@ -1,8 +1,19 @@
-<nav class="">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
+<nav class="text-center">
+  <div class="row">
+    <div class="col-sm-3">Flatiron Store</div>
+    <div class="col-sm-3">
+          <%= link_to "Store Home", store_path %>
+    </div>
+    <div class="col-sm-3">
         <% if !!@cart %>
-          <li> <%= link_to "Cart", cart_path(current_cart) %></li>
+          <%= link_to "Cart", cart_path(current_cart) %>
         <% end %>
-    </ul>
+    </div>
+    <div class="col-sm-3">
+        <% if current_user %>
+          <%= current_user.email %>
+        <% else %>
+          <%= link_to("Sign In", new_user_session_path) %>
+        <% end %>
+    </div>
 </nav>
