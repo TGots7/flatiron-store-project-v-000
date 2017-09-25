@@ -5,8 +5,8 @@
           <%= link_to "Store Home", store_path %>
     </div>
     <div class="col-sm-3">
-        <% if !!@cart %>
-          <%= link_to "Cart", cart_path(current_cart) %>
+        <% if current_user && current_user.current_cart %>
+          <%= link_to "Cart", cart_path(current_user.current_cart) %>
         <% end %>
     </div>
     <div class="col-sm-3">
