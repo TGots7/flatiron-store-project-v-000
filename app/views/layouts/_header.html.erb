@@ -11,9 +11,11 @@
     </div>
     <div class="col-sm-3">
         <% if current_user %>
-          <%= current_user.email %>
+          <p>Signed in as <%= current_user.email %></p>
+          <p><%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %></p>
         <% else %>
-          <%= link_to("Sign In", new_user_session_path) %>
+          <p><%= link_to("sign in", new_user_session_path) %></p>
+          <p><%= link_to("Sign up", new_user_registration_path) %><br></p>
         <% end %>
     </div>
 </nav>
