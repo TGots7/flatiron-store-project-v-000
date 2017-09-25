@@ -6,7 +6,7 @@
   </div>
   <div class="col-sm-8">
     <% @items.each do |item| %>
-      <p><%= item.title %> | $<%= item.currency(item.price) %> |
+      <p><%= item.title %> | $<%= currency(item.price) %> |
         <% if  current_user  %>
          <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
         <% end %>
